@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{.Title}}</title>
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 40px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #eeeeee;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        a {
+            display: block;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 15px;
+            margin-bottom: 10px;
+            border: 1px solid #333333;
+            border-radius: 5px;
+            font-size: 18px;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        a:hover {
+            background-color: #1a1a1a;
+            border-color: #555555;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>TecAlliance Links</h1>
+    {{/* Links Here... */}}
+    {{range .Links}}
+        <a href="{{.URL}}" target="_blank">{{.Name}}</a>
+    {{end}}
+</div>
+</body>
+</html>
