@@ -10,6 +10,7 @@ var Links = []Link{
 	{Name: "Bosal", URL: "https://web.tecalliance.net/bosal/en/home"},
 	{Name: "Elring", URL: "https://web.tecalliance.net/elring/en/home"},
 	{Name: "FAE", URL: "https://web.tecalliance.net/fae/en/home"},
+	{Name: "Hella", URL: "https://web.tecalliance.net/hella/en/home"},
 	{Name: "Kayaba", URL: "https://web.tecalliance.net/kyb/en/home"},
 	{Name: "MAHLE", URL: "https://web.tecalliance.net/mahle-catalog/en/home"},
 	{Name: "NGK", URL: "https://web.tecalliance.net/ngk-catalog/en/home"},
