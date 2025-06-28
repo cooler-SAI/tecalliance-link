@@ -13,6 +13,7 @@ var Links = []Link{
 	{Name: "Continental", URL: "https://web.tecalliance.net/continental/en/home"},
 	{Name: "Elring", URL: "https://web.tecalliance.net/elring/en/home"},
 	{Name: "FAE", URL: "https://web.tecalliance.net/fae/en/home"},
+	{Name: "GKN", URL: "https://web.tecalliance.net/GKN/en/home"},
 	{Name: "Hella", URL: "https://web.tecalliance.net/hella/en/home"},
 	{Name: "Kayaba", URL: "https://web.tecalliance.net/kyb/en/home"},
 	{Name: "MAHLE", URL: "https://web.tecalliance.net/mahle-catalog/en/home"},
