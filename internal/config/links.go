@@ -7,6 +7,7 @@ type Link struct {
 
 var Links = []Link{
 	{Name: "Ajusa", URL: "https://web.tecalliance.net/ajusa/en/home"},
+	{Name: "Ate", URL: "https://web.tecalliance.net/ate/en/home"},
 	{Name: "Bosal", URL: "https://web.tecalliance.net/bosal/en/home"},
 	{Name: "Continental", URL: "https://web.tecalliance.net/continental/en/home"},
 	{Name: "Elring", URL: "https://web.tecalliance.net/elring/en/home"},
