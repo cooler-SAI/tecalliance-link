@@ -44,8 +44,6 @@ Here is a basic example of how to initialize the client and make a request.
 
 ## Contributing
 
-## Contributing
-
 Contributions are welcome! If you'd like to help improve this library, please feel free to:
 
 1. **Fork the repository**
@@ -54,6 +52,13 @@ Contributions are welcome! If you'd like to help improve this library, please fe
 4. **Commit your changes** (`git commit -m 'feat: Add some amazing feature'`)
 5. **Push to the branch** (`git push origin feature/your-feature-name`)
 6. **Open a new Pull Request**
+
+## Upon successful execution, the application will:
+
+1. **Start a local web server on http://localhost:8095.**
+2. **Automatically open your default web browser to this URL.**
+3. **If the server is already running from a previous instance, executing go run ./cmd/app again will simply open a
+new browser tab to the existing server instance without starting a new one.**
 
 Please make sure your code follows the project's coding standards and includes tests for new features.
 
