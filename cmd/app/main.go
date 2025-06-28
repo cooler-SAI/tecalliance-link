@@ -54,7 +54,11 @@ func main() {
 	}
 	// If the port is free, immediately close the temporary listener,
 	// as the real listener will be created by http.ListenAndServe.
-	listener.Close()
+	err2 := listener.Close()
+	if err2 != nil {
+		log.Fatalf("Error closing temporary listener: %v", err2)
+		return
+	}
 	// --- End of new logic ---
 
 	// If we reached this point, the port is free, and we can start the server.
