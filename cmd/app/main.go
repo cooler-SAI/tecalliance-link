@@ -1,7 +1,6 @@
 package main
 
 import (
-	"errors"
 	"fmt"
 	"log"
 	"net"
@@ -27,7 +26,7 @@ func openBrowser(url string) {
 		err = exec.Command("open", url).Start()
 	default:
 		// If the OS is not supported, print an error.
-		err = fmt.Errorf("current OS does not support browser opening: %s", runtime.GOOS)
+		err = fmt.Errorf("Current OS does not support browser opening: %s", runtime.GOOS)
 	}
 	if err != nil {
 		// Print a warning if the browser could not be opened.
@@ -36,7 +35,7 @@ func openBrowser(url string) {
 }
 
 func main() {
-	addr := "localhost:8080"    // Address on which the server will listen
+	addr := "localhost:8095"    // Address on which the server will listen
 	fullURL := "http://" + addr // Full URL to open in the browser
 
 	// --- Start of new logic to handle already running server ---
@@ -44,8 +43,7 @@ func main() {
 	listener, err := net.Listen("tcp", addr)
 	if err != nil {
 		// If an error occurred, check if it's an "address already in use" error.
-		var opErr *net.OpError
-		if errors.As(err, &opErr) && opErr.Op == "listen" && opErr.Err.Error() == "address already in use" {
+		if opErr, ok := err.(*net.OpError); ok && opErr.Op == "listen" && opErr.Err.Error() == "address already in use" {
 			// If the port is busy, it means the server is already running.
 			log.Printf("Server is already running on %s. Opening browser to existing instance.", fullURL)
 			openBrowser(fullURL) // Open the browser to the already running server.
@@ -56,11 +54,7 @@ func main() {
 	}
 	// If the port is free, immediately close the temporary listener,
 	// as the real listener will be created by http.ListenAndServe.
-	err2 := listener.Close()
-	if err2 != nil {
-		fmt.Println("Error closing listener:", err2)
-		return
-	}
+	listener.Close()
 	// --- End of new logic ---
 
 	// If we reached this point, the port is free, and we can start the server.
@@ -74,6 +68,16 @@ func main() {
 	// Configure the links handler from the web package.
 	linksHandler := web.LinksHandler()
 	http.HandleFunc("/", linksHandler) // Use http.DefaultServeMux
+
+	// --- New: Handler for favicon.ico ---
+	// This handler serves the favicon.ico file from the project root.
+	// Ensure your favicon.ico file is located at the project root, e.g., D:\Enterprise Development\Go-projects\tecalliance-link\favicon.ico
+	http.HandleFunc("/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
+		// Serve the favicon.ico file. The path "favicon.ico" is relative to the Working Directory,
+		// which is configured as the project root.
+		http.ServeFile(w, r, "favicon.ico")
+	})
+	// --- End New ---
 
 	// Start the server in a separate goroutine so the main function can continue execution.
 	go func() {
