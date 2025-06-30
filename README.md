@@ -21,12 +21,17 @@ A Go client library for interacting with the [TecAlliance Order Manager API](htt
 
 ### Prerequisites
 
-*   Go 1.22 or later.
+*   Go 1.24 or later.
 *   A valid TecAlliance API Key.
 
 ### Installation
 
-To add the library to your project, use `go get`:
+1. **To add the library to your project, use `go get <lib name>`**
+2. **Building source:**
+   
+```go
+go build -ldflags="-H=windowsgui -s -w" -o="tecalliance-link.exe" ./cmd/app
+```
 
 
 ### Configuration
